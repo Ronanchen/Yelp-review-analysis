@@ -1,19 +1,9 @@
-# BD-Prj-Yelp
-Big data final project about Yelp data
-
-Group Member: Jiaqi Chen, Haoning Liu, Xiaolu Li, Mengqi Li
-
-
 ## Abstract
-The objective is to apply the big data analytical concept and tools taught in Big data course to extract insightful analytics and help existing restaurant owners. We applied descriptive analysis, predictive analysis and sentiment analysis to Yelp dataset.
+The objective is to apply the big data analytical concept and tools taught in Big data course to extract insightful analytics and help existing restaurant owners. I applied descriptive analysis, predictive analysis and sentiment analysis to Yelp dataset.
 
 
 ## Introduction
 Yelp is a local business directory and social networking reviews website. It enables customers to give companies ratings and reviews. Usually the review is brief text composed of a few lines with approximately 100 phrases. Often, a review defines different dimensions of a company and the user's experience with regard to those aspects.
-
-
-## Explanation for changing the dataset
-Originally, our group started from NYU Parking tickets. We conduct descriptive analysis of the dataset using Pyspark, S3 Hardoop. However, we didn't find an intereting aspect of this dataset to starting on modeling. Therefore, we decide to change the dataset. Currently, we are working onn Yelp restaurant review dataset.
 
 
 ## Data Introduction:
@@ -35,22 +25,22 @@ Yelp tip data contains ID, review text and date.
 Yelp user data contians information about consumers, for example, ID, their average rating stars, the number of their reviews noted as  'useful', 'cool' and 'funny' as well as their Yelp account information and their friends on Yelp.
 
 3. Size
-The size of whole datasets is around 4 GB. It shrinks after we transfer them from Json into CSV and total size of CSV files is roughly 3 GB.
+The size of whole datasets is around 4 GB. It shrinks after I transfer them from Json into CSV and total size of CSV files is roughly 3 GB.
 
 4. Format
-Original files we download is in Json, but we transfer it into CSV format by R.
+Original files I download is in Json, but then I transfer it into CSV format by R.
 
 
 ## Methods and Tools
 ### R
 Read Json files and write out as CSV files.
 
-Why R? R provides efficient package 'jsonlite' to transfer file format with only one line. Although total size of downloaded files are 4 GB, a little large to run in R, we transferred each file separately and R code runs well, taking no more then 20 minutes for the largest file in size of 2.9 GB to read in, transfer and write out.
+Why R? R provides efficient package 'jsonlite' to transfer file format with only one line. Although total size of downloaded files are 4 GB, a little large to run in R, I transferred each file separately and R code runs well, taking no more then 20 minutes for the largest file in size of 2.9 GB to read in, transfer and write out.
 
 ### Python/ command line
 Clean up datasets and deal with punctuation problems in 'text' columns in several files.
 
-Why Python/ command line? We found the punctuation problem in process of merging and print schema in Python. Complex punctuation in 'text' columns leads to different number of coulumns in each row. So we deal with it with Python. We also tried command line and it worked. Although more concise, command line code with regular expression is more challengeable to write.
+Why Python/ command line? I found the punctuation problem in process of merging and print schema in Python. Complex punctuation in 'text' columns leads to different number of coulumns in each row. So I deal with it with Python. I also tried command line and it worked. Although more concise, command line code with regular expression is more challengeable to write.
 
 ### PySpark
 Merge data, build up Logistic model and analyze sentiment.
@@ -85,20 +75,20 @@ write.csv(tip,"yelp_tip.csv",row.names = F)
 
 ## Descriptive Analysis
 
-We mainly conduct descriptive analysis on 3 datasets: business_data, review_data and user_data, to provide a comprehensive insights before we build models and  develop other analysis.
+I mainly conduct descriptive analysis on 3 datasets: business_data, review_data and user_data, to provide a comprehensive insights before I build models and develop other analysis.
 
-1. In business_data, we firstly count how many business owners are in each state, and the top 6 states are Arizona, Nevada, Ontario, North Carolina, Ohio and Pennsylvania, which are all above 10,000. Then we analyze the distribution of stars that all business owners had received. People tend to give 4.0, 3.5, 5.0, 4.5 stars, which are all higher than neutual one, 3.0.
+1. In business_data, I firstly count how many business owners are in each state, and the top 6 states are Arizona, Nevada, Ontario, North Carolina, Ohio and Pennsylvania, which are all above 10,000. Then I analyze the distribution of stars that all business owners had received. People tend to give 4.0, 3.5, 5.0, 4.5 stars, which are all higher than neutual one, 3.0.
 
-2. In review_data, we deal with the problem about how many "useful", "cool" and "funny" compliments are got in every review. All three kinds of compliments show a monotonic relationship, there are less and less reviews when the compliments in one review increase. For example, review that receives zero "useful" or "cool" or "funny" is more than 50%. The review that gets most "useful" have 1241 ones, and there are only 2 reviews get more than 1000 "useful" compliments. The review that gets most "funny" have 1290 ones, and that is the only review gets more than 1000 "funny" compliments. The review that gets most "cool" have 506 ones, and that is the only review gets more than 500 "cool" compliments. So users tend to compliment a review as useful or funny, more than cool.
+2. In review_data, I deal with the problem about how many "useful", "cool" and "funny" compliments are got in every review. All three kinds of compliments show a monotonic relationship, there are less and less reviews when the compliments in one review increase. For example, review that receives zero "useful" or "cool" or "funny" is more than 50%. The review that gets most "useful" have 1241 ones, and there are only 2 reviews get more than 1000 "useful" compliments. The review that gets most "funny" have 1290 ones, and that is the only review gets more than 1000 "funny" compliments. The review that gets most "cool" have 506 ones, and that is the only review gets more than 500 "cool" compliments. So users tend to compliment a review as useful or funny, more than cool.
 
-3. In user_data, firstly we count how many fans does each account have. Its' monotonic again, more than a half accounts have 0 fan, and the number of users become less and less when fans volumn increases. The most popular user has 9538 fans, while the second popular user only have 2964. About what's average stars does each user give, most of them give 5.0, 1.0, 3.0, 4.0, which also reveals that most of our users only leave a review once. The average stars from users that give multiple reviews are 3.67, 4.33, 2.33, 4.67, 4.2 and 3.33 which almost are neutral or positive.
+3. In user_data, firstly I count how many fans does each account have. Its' monotonic again, more than a half accounts have 0 fan, and the number of users become less and less when fans volumn increases. The most popular user has 9538 fans, while the second popular user only have 2964. About what's average stars does each user give, most of them give 5.0, 1.0, 3.0, 4.0, which also reveals that most of our users only leave a review once. The average stars from users that give multiple reviews are 3.67, 4.33, 2.33, 4.67, 4.2 and 3.33 which almost are neutral or positive.
    
 
 ## Logistic Model
 
-We try to predict rating for business on Yelp by reasonalbe attributes in data. Considering the distribution of rating scores, from 1 star upto 5 stars, we define no more than 3 stars as low rating and convert the number of stars into 0 and those with over 3 stars as high rating and convert it into 1. Thus we get the column for prediction named stars as boolean value.
+I try to predict rating for business on Yelp by reasonalbe attributes in data. Considering the distribution of rating scores, from 1 star upto 5 stars, I define no more than 3 stars as low rating and convert the number of stars into 0 and those with over 3 stars as high rating and convert it into 1. Thus I get the column for prediction named stars as boolean value.
 
-Attributes we choose as independent variables: Business ID, User ID, rating stars in review dataset, number of reviews tagged as 'useful', 'funny' and 'cool', business location including state, city, latitude and longitude, average rating stars for business, number of reviews, average rating stars given by users, number of compliment reviews.
+Attributes I choose as independent variables: Business ID, User ID, rating stars in review dataset, number of reviews tagged as 'useful', 'funny' and 'cool', business location including state, city, latitude and longitude, average rating stars for business, number of reviews, average rating stars given by users, number of compliment reviews.
 
 
 ### Model Processing
@@ -120,29 +110,29 @@ Model accuracy is 0.818937. It performs well.
 
 ## Sentiment Analysis
 ### Data preprocessing
-1. Target variable recoding: We relabeled the stars column so that any reviews with 4 stars or above will be 1, which means positive, anything else is deemed to be 0, which means negative reviews. 
+1. Target variable recoding: I relabeled the stars column so that any reviews with 4 stars or above will be 1, which means positive, anything else is deemed to be 0, which means negative reviews. 
 ```# relabel target variable
 def convert_rate(rate):
     rate = int(rate)
     if rate >=4: return 1
     else: return 0
  ```       
-2. Then We begin to do text processings before tokenizing the text.
+2. Then I begin to do text processings before tokenizing the text.
    a. Remove punctuation
    b. Remove stopwords
    C. Make tokens   
-   We leverage the methords in pyspark ml features.```from pyspark.ml.feature import *```
+   I leverage the methords in pyspark ml features.```from pyspark.ml.feature import *```
 3. Create trigrams whose frequency larger than 10
-   a. We use ```ngram``` to create trigrams. An n-gram is a contiguous sequence of n items from a given sample of text or speech. Trigrams means three words appear together.
-   b. We use MapReduce functions in python to identify the Trigrams with more than 10 times in the reviews.
+   a. I use ```ngram``` to create trigrams. An n-gram is a contiguous sequence of n items from a given sample of text or speech. Trigrams means three words appear together.
+   b. I use MapReduce functions in python to identify the Trigrams with more than 10 times in the reviews.
 ```ngrams = add_ngram.rdd.flatMap(lambda x: x[-1]).filter(lambda x: len(x.split())==n)```
-   c. We will replace the original text with trigrams and then tokenize them. 
-   d. We then create TF-IDF matrix to make preparation for the model
+   c. I will replace the original text with trigrams and then tokenize them. 
+   d. I then create TF-IDF matrix to make preparation for the model
   
  ### Model 
- 1. We split data into training and test set.
- 2. We define hyper-parameters in SVM model: regParam and numIterations.
- 3. Model evaluation: Since we know that a lot of data are labeled 1, it is an imbalanced dataset. So we chooss to use F1, a weighted average of precision and recall -- could evaluate the model. Hence, the model returns an F1 score of 88.48%
+ 1. Split data into training and test set.
+ 2. Define hyper-parameters in SVM model: regParam and numIterations.
+ 3. Model evaluation: Since I know that a lot of data are labeled 1, it is an imbalanced dataset. So I choose to use F1, a weighted average of precision and recall -- could evaluate the model. Hence, the model returns an F1 score of 88.48%
 
 
 
