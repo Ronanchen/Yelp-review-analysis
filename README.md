@@ -142,21 +142,21 @@ def convert_rate(rate):
 People tend to give neutral or positive reviews and stars to busniess owners. But for people who only leave one review on Yelp, they usually have extreme feelings on that experience, so most of them give either 5 stars or 1 star.
 
 ### Logistic Model
-We can predit whether a business gets high or low rating with factors including number of stars in review data, number of reviews tagged as 'useful', 'funny' and 'cool', business location including state, city, latitude and longitude, average rating stars for business, number of reviews, average rating stars given by users, number of compliment reviews.
+I can predit whether a business gets high or low rating with factors including number of stars in review data, number of reviews tagged as 'useful', 'funny' and 'cool', business location including state, city, latitude and longitude, average rating stars for business, number of reviews, average rating stars given by users, number of compliment reviews.
 
 ### Sentiment Analysis
-Supportvector Machine to predict positive or negative reviews with 88.48% F1 score.
+Support vector Machine to predict positive or negative reviews with 88.48% F1 score.
 
 
 
 ## Challenges and Solutions
-1. Transfer data from Json to CSV format. We tried several different R packages to find a way to get data in correct structure in CSV format.
+1. Transfer data from Json to CSV format. I tried several different R packages to find a way to get data in correct structure in CSV format.
 
-2. Read in data with text columns in a neat format. We spent a lot time in this process and solved it with changing and removing punctuation in 'text' columns duplicated with punctuation used to separate columns and rows. Command line also worked for this problem.
+2. Read in data with text columns in a neat format. I spent a lot time in this process and solved it with changing and removing punctuation in 'text' columns duplicated with punctuation used to separate columns and rows. Command line also worked for this problem.
 
 3. Upload data onto S3 bucket from local cost long time.
 
-4. Code for model trainning and testing doesn't respond due to the large size of data. We solved it by creating cluster with more instances and higher CPU, memory and storage.
+4. Code for model trainning and testing doesn't respond due to the large size of data. I solved it by creating cluster with more instances and higher CPU, memory and storage.
 
 5. Limited resources online regarding pyspark machine learning. It's difficult to debug.
 
